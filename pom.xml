@@ -15,7 +15,7 @@
         <relativePath/>
     </parent>
 
-    <!--  aliyun镜像，下载依赖用  -->
+    <!--  阿里云镜像，下载依赖用  -->
     <repositories>
         <repository>
             <id>alimaven</id>
