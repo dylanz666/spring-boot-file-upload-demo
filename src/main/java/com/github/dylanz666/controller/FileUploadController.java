@@ -13,25 +13,25 @@ import java.io.File;
 @RestController
 @RequestMapping("/api")
 public class FileUploadController {
-    @Value(value = "${upload.defaultRootPath}")
+    @Value(value = "${file.upload.dir}")
     private String rootPath;
 
-    @GetMapping("/ping")
+    @GetMapping("/upload/ping")
     public String ping() {
         return "success";
     }
 
     @PostMapping("/file")
     public Boolean upload(@RequestParam("file") MultipartFile file) {
-        try{
+        try {
             String fileName = file.getOriginalFilename();
+            assert fileName != null;
             System.out.println(fileName);
 
-            File dest = new File(rootPath + fileName);
+            File dest = new File(rootPath, fileName);
             file.transferTo(dest);
-
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
