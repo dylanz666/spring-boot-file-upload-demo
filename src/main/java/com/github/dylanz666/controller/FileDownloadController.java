@@ -60,12 +60,8 @@ public class FileDownloadController {
             return "fail";
         } finally {
             try {
-                if (bis != null) {
-                    bis.close();
-                }
-                if (fis != null) {
-                    fis.close();
-                }
+                bis.close();
+                fis.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
