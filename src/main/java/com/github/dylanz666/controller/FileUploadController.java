@@ -1,5 +1,6 @@
 package com.github.dylanz666.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,7 +13,8 @@ import java.io.File;
 @RestController
 @RequestMapping("/api")
 public class FileUploadController {
-    private static final String rootPath = "E:\\Resource\\spring-boot-cloud\\";
+    @Value(value = "${upload.defaultRootPath}")
+    private String rootPath;
 
     @GetMapping("/ping")
     public String ping() {
